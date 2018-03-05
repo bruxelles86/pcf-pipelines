@@ -4,6 +4,8 @@ set -eux
 echo "$PEM" > pcf.pem
 chmod 0600 pcf.pem
 
+cat pcf.pem
+
 output_json=$(terraform output --json -state terraform-state/terraform.tfstate)
 
 db_host=$(echo $output_json | jq --raw-output '.db_host.value')
