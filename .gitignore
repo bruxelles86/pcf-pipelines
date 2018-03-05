@@ -3,3 +3,5 @@ config
 *.iml
 .idea
 *.sw[po]
+will-learning-pcf.pem
+install-pcf/aws/params.yml
