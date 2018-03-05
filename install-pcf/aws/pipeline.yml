@@ -28,7 +28,7 @@ resources:
 - name: pcf-pipelines
   type: git
   source:
-    uri: git@github.com:pivotal-cf/pcf-pipelines.git
+    uri: git@github.com:bruxelles86/pcf-pipelines.git
     branch: master
     private_key: {{git_private_key}}
 
@@ -167,6 +167,7 @@ jobs:
   plan:
   - aggregate:
     - get: pcf-pipelines
+      passed: [create-infrastructure]
     - get: terraform-state
       trigger: true
       passed: [create-infrastructure]
@@ -204,6 +205,7 @@ jobs:
   plan:
   - aggregate:
     - get: pcf-pipelines
+      passed: [configure-director]
     - get: terraform-state
       trigger: true
       passed: [configure-director]
@@ -221,6 +223,7 @@ jobs:
   plan:
   - aggregate:
     - get: pcf-pipelines
+      passed: [deploy-director]
     - get: pivnet-product
       resource: pivnet-elastic-runtime
       params:
@@ -255,6 +258,7 @@ jobs:
   plan:
   - aggregate:
     - get: pcf-pipelines
+      passed: [upload-ert]
     - get: terraform-state
       trigger: true
       passed: [upload-ert]
@@ -298,10 +302,6 @@ jobs:
       CONTAINER_NETWORKING_NW_CIDR: {{container_networking_nw_cidr}}
       CREDUB_ENCRYPTION_KEY_NAME1: {{credhub_encryption_key_name1}}
       CREDUB_ENCRYPTION_KEY_SECRET1: {{credhub_encryption_key_secret1}}
-      CREDUB_ENCRYPTION_KEY_NAME2: {{credhub_encryption_key_name2}}
-      CREDUB_ENCRYPTION_KEY_SECRET2: {{credhub_encryption_key_secret2}}
-      CREDUB_ENCRYPTION_KEY_NAME3: {{credhub_encryption_key_name3}}
-      CREDUB_ENCRYPTION_KEY_SECRET3: {{credhub_encryption_key_secret3}}
       CREDHUB_PRIMARY_ENCRYPTION_NAME: {{credhub_primary_encryption_name}}
       POE_SSL_NAME1: {{poe_ssl_name1}}
       POE_SSL_CERT1: {{poe_ssl_cert1}}
