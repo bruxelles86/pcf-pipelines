@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -eux
 
 echo "$PEM" > pcf.pem
 chmod 0600 pcf.pem
