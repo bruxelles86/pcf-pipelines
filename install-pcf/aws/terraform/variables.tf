@@ -36,7 +36,7 @@ variable "opsman_allow_https_cidr_ranges" {
 
 variable "opsman_instance_type" {
   description = "Instance Type for OpsMan"
-  default     = "m3.large"
+  default     = "t2.xlarge"
 }
 
 variable "nat_instance_type" {
