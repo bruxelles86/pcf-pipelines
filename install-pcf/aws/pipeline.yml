@@ -29,7 +29,7 @@ resources:
   type: git
   source:
     uri: git@github.com:bruxelles86/pcf-pipelines.git
-    branch: master
+    branch: latest-release
     private_key: {{git_private_key}}
 
 - name: pivnet-opsmgr
